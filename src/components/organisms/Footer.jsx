@@ -22,7 +22,7 @@ const Footer = () => (
 
       {/* Formas de pago */}
       <div className="flex flex-col gap-1">
-        <h2 className="mb-1 text-xl font-semibold">Formas de pago</h2>
+        <h2 className="mb-1 text-xl  font-semibold">Formas de pago</h2>
         <div className="flex gap-2">
           <img src={mastercard} alt="mastercard-logo" className="w-12 h-10" />
           <img src={visa} alt="visa-logo" className="w-12 h-10" />

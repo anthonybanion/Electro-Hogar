@@ -2,12 +2,15 @@ import { useState } from 'react';
 import Logo from '../atoms/Logo';
 import SearchInput from '../atoms/SearchInput';
 import NavigationMenu from '../molecules/NavigationMenu';
+import { motion } from 'framer-motion';
+import { slideIn } from '../../utility/animation';
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="bg-gray-950 px-6 py-4 fixed top-0 left-0 right-0">
+    <motion.header className="bg-gray-950 px-6 py-4 fixed top-0 left-0 right-0 z-10"
+    variants={slideIn("up", 0.3)} initial="initial" animate="animate">
       <div className="flex items-center justify-between">
         <Logo />
 
@@ -34,7 +37,7 @@ const Header = () => {
           <NavigationMenu isMobile />
         </div>
       )}
-    </header>
+    </motion.header>
   );
 };
 

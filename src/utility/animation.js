@@ -1,33 +1,33 @@
-export const slideUp = (delay) => {
-    return {
-        initial: {
-            y: -50,
-            opacity: 0
-        },
-        animate: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.5,
-                delay
-            }
-        }
-    }
-}
+export const slideIn = (direction = "up", delay = 1) => {
+  let initial = { opacity: 0 };
+  
+  switch (direction) {
+    case "up":
+      initial.y = -200;
+      break;
+    case "down":
+      initial.y = 200;
+      break;
+    case "left":
+      initial.x = -200;
+      break;
+    case "right":
+      initial.x = 200;
+      break;
+    default:
+      break;
+  }
 
-export const slideInFrontSide = (direction = "left", delay) => {
-    return {
-        initial: {
-            x: direction === "left" ? -100 : 100,
-            opacity: 0
-        },
-        animate: {
-            x: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.5,
-                delay
-            }
-        }
+  return {
+    initial,
+    animate: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay
+      }
     }
-}
+  };
+};

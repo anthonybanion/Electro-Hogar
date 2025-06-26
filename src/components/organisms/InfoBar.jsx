@@ -1,7 +1,10 @@
 import InfoBlock from '../molecules/InfoBlock';
+import { motion } from 'framer-motion';
+import { slideIn } from '../../utility/animation';
 
 const InfoBar = () => (
-    <section className="bg-gray-100 py-6 px-4 my-6">
+    <motion.section className="bg-gray-100 py-6 px-4 my-6"
+    variants={slideIn("down", 0.3)} initial="initial" animate="animate">
         
             <div
                 className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6  text-left"
@@ -23,7 +26,7 @@ const InfoBar = () => (
                 />
             </div>
        
-    </section>
+    </motion.section>
 );
 
 export default InfoBar;
