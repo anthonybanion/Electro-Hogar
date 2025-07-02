@@ -95,6 +95,7 @@ export function ProductsProvider({ children }) {
             value={{
                 products,
                 selectedProduct,
+                setSelectedProduct,
                 fetchProducts,
                 fetchProductById,
                 addProduct,
