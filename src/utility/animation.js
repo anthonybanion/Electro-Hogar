@@ -1,18 +1,23 @@
-export const slideIn = (direction = "up", delay = 1) => {
-  let initial = { opacity: 0 };
-  
+export const slideIn = (direction = "up", delay = 0.3, duration = 1) => {
+  const initial = { opacity: 0 };
+  const animate = { opacity: 1, transition: { delay, duration } };
+
   switch (direction) {
     case "up":
-      initial.y = -200;
+      initial.y = 50;
+      animate.y = 0;
       break;
     case "down":
-      initial.y = 200;
+      initial.y = -50;
+      animate.y = 0;
       break;
     case "left":
-      initial.x = -200;
+      initial.x = -50;
+      animate.x = 0;
       break;
     case "right":
-      initial.x = 200;
+      initial.x = 50;
+      animate.x = 0;
       break;
     default:
       break;
@@ -20,14 +25,7 @@ export const slideIn = (direction = "up", delay = 1) => {
 
   return {
     initial,
-    animate: {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        delay
-      }
-    }
+    animate,
   };
 };
+

@@ -1,6 +1,6 @@
 import InputField from "../atoms/InputField";
 
-const AuthForm = ({ email, password, onChange, onSubmit, buttonText }) => (
+const AuthForm = ({ email, password, onChange, onSubmit, button }) => (
   <form onSubmit={onSubmit} className="flex flex-col gap-4 w-full max-w-sm">
     <InputField
       label="Correo electrónico"
@@ -16,12 +16,7 @@ const AuthForm = ({ email, password, onChange, onSubmit, buttonText }) => (
       value={password}
       onChange={onChange}
     />
-    <button
-      type="submit"
-      className="bg-purple-600 text-white py-2 rounded hover:bg-purple-700"
-    >
-      {buttonText}
-    </button>
+    {button}
   </form>
 );
 
