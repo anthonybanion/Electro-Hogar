@@ -1,4 +1,4 @@
-import FeaturedProducts from '../organisms/FeaturedProducts';
+// import FeaturedProducts from '../organisms/FeaturedProducts';
 import HeroSection from '../organisms/HeroSection';
 import InfoBar from '../organisms/InfoBar';
 import DefaultLayout from '../uiTemplates/DefaultLayout';
@@ -8,7 +8,7 @@ const Home = () => {
     <DefaultLayout>
       <HeroSection />
       <InfoBar />
-      <FeaturedProducts />
+      {/* <FeaturedProducts /> */}
     </DefaultLayout>
   );
 };
