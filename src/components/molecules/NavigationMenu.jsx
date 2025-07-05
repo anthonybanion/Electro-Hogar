@@ -14,7 +14,7 @@ const NavigationMenu = ({ isMobile = false }) => {
     { label: 'Productos', path: '/productos' },
     user ? { label: "Cerrar sesión", action: handleLogout } :
       { label: 'Ingresar', path: '/login' },
-    { label: <i className="bi bi-cart text-white" title="Carrito"></i>, path: '/carrito' },
+    { label: <i className="bi bi-cart text-white text-xl hover:text-cyan-400 transition-colors duration-200" title="Carrito"></i>, path: '/carrito' },
   ];
 
   return (

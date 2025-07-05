@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '../../atoms/Button';
 
 const ProductDetailCard = ({ product }) => {
-    const { name, image, price } = product;
+    const { name, image, price, stock } = product;
     const [quantity, setQuantity] = useState(1);
 
     function addQuantity() {
@@ -18,17 +18,31 @@ const ProductDetailCard = ({ product }) => {
     }
 
     return (
-        <div className="flex flex-row min-h-[500px] max-h-[800px] max-w-[1400px] bg-white rounded-xl mx-auto py-5">
+        <div className="flex flex-col sm:flex-row sm:max-h-[800px] max-w-[1400px] bg-white rounded-xl mx-5 2xl:mx-auto py-5">
             <img
                 src={image}
                 alt={`Imagen de ${name}`}
-                className="w-full object-cover rounded-md"
+                className="w-11/12 sm:w-7/12 object-cover rounded-md mx-auto"
             />
-            <div className="flex flex-col justify-center p-4">
-                <h3 className="text-lg font-semibold m-3 text-center">{name}</h3>
-                <p className="text-xl font-bold mt-2 text-green-600 text-center">${price}</p>
-                <p>{product.description}</p>
-                <div className="flex items-center justify-center mt-4">
+            <div className="flex flex-col p-4 gap-6 w-full">
+                <h3 className="text-xl md:text-2xl font-semibold">{name}</h3>
+                <div>
+                    <p className="text-lg md:text-xl font-bold mt-2 text-green-600">${price}</p>
+                    <p className="text-sm md:text-base text-gray-500">9 cuotas sin interés</p>
+                    <p className="text-sm md:text-base text-gray-500">Envío a todo el pais</p>
+                </div>
+                <p className='text-sm md:text-base'>{product.description}</p>
+                <p className="text-sm md:text-base text-gray-500">Cantidad disponible: {stock}</p>
+                <div>
+                    <p className="text-base text-gray-500">Talle</p>
+                    <select className="border border-gray-300 rounded-md p-2 w-full xl:w-6/12" defaultValue="S">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+                <div className="flex items-center justify-center mt-auto">
                     <button className="bg-gray-950 text-white w-8 h-8 flex items-center justify-center rounded-full p-2 mr-2 hover:bg-gray-800" onClick={subtractQuantity}>-</button>
                     <span className="text-lg font-semibold mx-2">{quantity}</span>
                     <button className="bg-gray-950 text-white w-8 h-8 flex items-center justify-center rounded-full p-2 ml-2 hover:bg-gray-800" onClick={addQuantity}>+</button>

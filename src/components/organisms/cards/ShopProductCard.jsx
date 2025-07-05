@@ -29,12 +29,7 @@ const ShopProductCard = ({ product }) => {
             />
             <p className="text-xl font-bold mt-2 text-green-600 text-center">${price}</p>
             <div className="flex items-center justify-center mt-4">
-                <button
-                    disabled={quantity === 1}
-                    className={`w-8 h-8 flex items-center justify-center rounded-full mr-2 ${quantity === 1 ? "bg-gray-400 cursor-not-allowed" : "bg-gray-950 hover:bg-gray-800 text-white"
-                        }`}
-                    onClick={subtractQuantity}
-                >
+                <button className="bg-gray-950 text-white w-8 h-8 flex items-center justify-center rounded-full mr-2 hover:bg-gray-800" onClick={subtractQuantity}>
                     -
                 </button>
                 <span className="text-lg font-semibold mx-2">{quantity}</span>
