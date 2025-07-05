@@ -1,8 +1,9 @@
 import DefaultLayout from "../uiTemplates/DefaultLayout";
+import ProductDetail from "../organisms/ProductDetail";
 
 const ProductDetailsPage = () => (
   <DefaultLayout>
-    <h2>Detalles del Producto</h2>
+    <ProductDetail />
   </DefaultLayout>
 );
 

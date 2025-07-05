@@ -1,5 +1,5 @@
 import { useProductsContext } from "../../contexts/ProductsContext";
-import ProductCard from "../organisms/ProductCard";
+import Button from "../atoms/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { useEffect } from "react";
@@ -16,6 +16,10 @@ const FeaturedProducts = () => {
       fetchProducts();
     }
   }, []);
+
+   const handleClick = (id) => {
+        navigate(`/productos/${id}`);
+    };
 
   // Usamos los primeros 6 productos como destacados
   const featured = products.slice(0, 6);
@@ -43,16 +47,20 @@ const FeaturedProducts = () => {
         >
           {featured.map((product) => (
             <SwiperSlide key={product.id}>
-              <ProductCard
-                variant="featured"
-                id={product.id}
-                name={product.name}
-                image={product.image}
-                price={product.price}
-                description={product.description}
-                onViewDetails={() => navigate(`/product/${product.id}`)
-                }
+              <h3 className="text-lg font-semibold m-3 text-center">{product.name}</h3>
+              <img
+                src={product.image}
+                alt={`Imagen de ${product.name}`}
+                className="w-full aspect-square object-cover rounded-md"
               />
+              <p className="text-xl font-bold mt-2 text-green-600 text-center">${product.price}</p>
+              <div className="flex items-center justify-center mt-4 gap-3 text-sm font-sans">
+                <Button
+                  textButton="Ver detalles"
+                  className="bg-white text-gray-950 border border-gray-950 hover:bg-gray-100 px-3 py-2 rounded-xl w-full"
+                  onClick={() => handleClick(product.id)}
+                />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

@@ -1,9 +1,11 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import Button from '../../atoms/Button';
+import { useNavigate } from 'react-router-dom';
 
 const ShopProductCard = ({ product }) => {
     const { name, image, price } = product;
     const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate();
 
     function addQuantity() {
         setQuantity(prevQuantity => prevQuantity + 1);
@@ -13,8 +15,12 @@ const ShopProductCard = ({ product }) => {
         setQuantity(prevQuantity => prevQuantity > 1 ? prevQuantity - 1 : 1);
     }
 
+    const handleClick = () => {
+        navigate(`/productos/${product.id}`);
+    };
+
     return (
-        <div className="bg-white rounded-xl shadow-md max-w-[500px] p-4 hover:shadow-lg transition-shadow duration-300">
+        <div className="bg-white border border-gray-200 rounded-xl shadow-md max-w-[500px] p-4 hover:shadow-lg transition-shadow duration-300">
             <h3 className="text-lg font-semibold m-3 text-center">{name}</h3>
             <img
                 src={image}
@@ -23,9 +29,16 @@ const ShopProductCard = ({ product }) => {
             />
             <p className="text-xl font-bold mt-2 text-green-600 text-center">${price}</p>
             <div className="flex items-center justify-center mt-4">
-                <button className="bg-gray-950 text-white w-8 h-8 flex items-center justify-center rounded-full p-2 mr-2 hover:bg-gray-800" onClick={subtractQuantity}>-</button>
+                <button
+                    disabled={quantity === 1}
+                    className={`w-8 h-8 flex items-center justify-center rounded-full mr-2 ${quantity === 1 ? "bg-gray-400 cursor-not-allowed" : "bg-gray-950 hover:bg-gray-800 text-white"
+                        }`}
+                    onClick={subtractQuantity}
+                >
+                    -
+                </button>
                 <span className="text-lg font-semibold mx-2">{quantity}</span>
-                <button className="bg-gray-950 text-white w-8 h-8 flex items-center justify-center rounded-full p-2 ml-2 hover:bg-gray-800" onClick={addQuantity}>+</button>
+                <button className="bg-gray-950 text-white w-8 h-8 flex items-center justify-center rounded-full ml-2 hover:bg-gray-800" onClick={addQuantity}>+</button>
             </div>
             <div className="flex items-center justify-center mt-4 gap-3 text-sm font-sans">
                 <Button
@@ -35,6 +48,7 @@ const ShopProductCard = ({ product }) => {
                 <Button
                     textButton="Ver detalles"
                     className="bg-white text-gray-950 border border-gray-950 hover:bg-gray-100 px-3 py-2 rounded-xl w-full"
+                    onClick={handleClick}
                 />
             </div>
         </div>

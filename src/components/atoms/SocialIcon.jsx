@@ -13,7 +13,7 @@ const SocialIcon = ({
 
   const icon = (
     <i
-      className={`${iconClass} text-2xl pt-1`}
+      className={`${iconClass} text-xl pt-0.5`}
       aria-hidden="true"
       title={label}
     />
@@ -34,7 +34,7 @@ const SocialIcon = ({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className={`${classes} hover:scale-110 transition-transform`}
+      className={`${classes} hover:scale-110 transition-transform w-10 h-10`}
     >
       {icon}
     </a>
