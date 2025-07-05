@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useProductsContext } from "../../contexts/ProductsContext";
 import { useEffect, useState } from "react";
 import ProductDetailCard from "../organisms/cards/ProductDetailCard";
+import LoadingSpinner from "../atoms/LoadingSpinner";
 
 const ProductDetail = () => {
   const { id } = useParams(); // <- ID de la URL
@@ -24,7 +25,9 @@ const ProductDetail = () => {
   }, [id]);
 
   if (cargando) {
-    return <p className="text-gray-500 text-center">Cargando producto...</p>;
+    return <div className="mt-20">
+      <LoadingSpinner size="w-20 h-20" color="border-blue-950" />
+    </div>;
   }
 
   if (error) {

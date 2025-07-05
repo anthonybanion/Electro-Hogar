@@ -1,7 +1,8 @@
 import { useProductsContext } from "../../contexts/ProductsContext";
 import { useEffect, useState } from "react";
 import ShopProductCard from "../organisms/cards/ShopProductCard";
-
+import LoadingSpinner from "../atoms/LoadingSpinner";
+import { div } from "framer-motion/client";
 
 const Shop = () => {
     const { products, fetchProducts } = useProductsContext();
@@ -23,7 +24,9 @@ const Shop = () => {
     }, []);
 
     if (cargando) {
-        return <p className="text-gray-500 text-center">Cargando productos...</p>;
+        return <div className="mt-20">
+            <LoadingSpinner size="w-20 h-20" color="border-blue" />
+        </div>;
     } else if (error) {
         return <h1>{error}</h1>
     } else if (products.length === 0) {
