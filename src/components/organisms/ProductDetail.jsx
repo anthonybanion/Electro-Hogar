@@ -26,7 +26,7 @@ const ProductDetail = () => {
 
   if (cargando) {
     return <div className="mt-20">
-      <LoadingSpinner size="w-20 h-20" color="border-blue-950" />
+      <LoadingSpinner size="w-20 h-20" color="border-blue-800" />
     </div>;
   }
 

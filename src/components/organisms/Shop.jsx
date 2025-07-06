@@ -25,7 +25,7 @@ const Shop = () => {
 
     if (cargando) {
         return <div className="mt-20">
-            <LoadingSpinner size="w-20 h-20" color="border-blue" />
+            <LoadingSpinner size="w-20 h-20" color="border-blue-800" />
         </div>;
     } else if (error) {
         return <h1>{error}</h1>

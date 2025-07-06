@@ -1,11 +1,22 @@
 import { useState } from 'react';
 import Button from '../../atoms/Button';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../../contexts/CartContext';
+import { sweetTimer } from '../../../utility/sweetAlert';
 
 const ShopProductCard = ({ product }) => {
+    const { addToCart } = useCart();
     const { name, image, price } = product;
     const [quantity, setQuantity] = useState(1);
     const navigate = useNavigate();
+
+    const handleAddToCart = () => {
+        if (quantity < 1) return;
+        const productToAdd = { ...product, quantity };
+        sweetTimer("Producto agregado al carrito");
+        addToCart(productToAdd);
+        setQuantity(1);
+    };
 
     function addQuantity() {
         setQuantity(prevQuantity => prevQuantity + 1);
@@ -39,6 +50,7 @@ const ShopProductCard = ({ product }) => {
                 <Button
                     textButton="Comprar"
                     className="bg-gray-950 text-white hover:bg-gray-800 px-3 py-2 rounded-xl w-full"
+                    onClick={handleAddToCart}
                 />
                 <Button
                     textButton="Ver detalles"
