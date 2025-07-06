@@ -1,9 +1,12 @@
 import DefaultLayout from "../uiTemplates/DefaultLayout"
 import { useAuth } from "../../contexts/AuthContext"
 import { Navigate } from "react-router-dom"
+import { useCart } from "../../contexts/CartContext"
+import CartProductCard from "../organisms/cards/CartProductCard"
 
 const Cart = () => {
     const { user } = useAuth()
+    const { productsCart } = useCart()
 
      if (!user) {
         return (
@@ -13,7 +16,11 @@ const Cart = () => {
 
     return (
         <DefaultLayout>
-            <h1 className="text-black mt-80">Carrito</h1>
+            <div>
+                {productsCart.map(product => (
+                    <CartProductCard key={product.id} product={product} />
+                ))}
+            </div>
         </DefaultLayout>
     )
 }

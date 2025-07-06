@@ -13,6 +13,7 @@ const ShopProductCard = ({ product }) => {
     const handleAddToCart = () => {
         if (quantity < 1) return;
         const productToAdd = { ...product, quantity };
+        console.log("Producto a agregar al carrito:", productToAdd);
         sweetTimer("Producto agregado al carrito");
         addToCart(productToAdd);
         setQuantity(1);
