@@ -6,26 +6,14 @@ export const CartContext = createContext();
 
 // Cart provider
 export function CartProvider({ children }) {
-    const [productsCart, setProductsCart] = useState([]);
-
-    // Load cart from localStorage on initial render
-    useEffect(() => {
+    const [productsCart, setProductsCart] = useState(() => {
         const stored = localStorage.getItem("cart");
-        if (stored) {
-            setProductsCart(JSON.parse(stored));
-        }
-    }, []);
+        return stored ? JSON.parse(stored) : [];
+    });
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(productsCart));
     }, [productsCart]);
-
-    const updateQuantity = (id, quantity) => {
-        const updated = productsCart.map((p) =>
-            p.id === id ? { ...p, quantity: quantity } : p
-        );
-        setProductsCart(updated);
-    }
 
     const getTotalItems = () => {
         return productsCart.reduce((acc, p) => acc + p.quantity, 0);
@@ -48,7 +36,6 @@ export function CartProvider({ children }) {
         );
     };
 
-
     const addToCart = (product) => {
         const exists = productExists(product.id);
         const quantityToAdd = product.quantity || 1;
@@ -70,15 +57,26 @@ export function CartProvider({ children }) {
         setProductsCart(newCart);
     }
 
+    const updateCart = (updatedProduct) => {
+        const newCart = productsCart.map((p) => {
+            if (p.id === updatedProduct.id) {
+                return { ...p, quantity: updatedProduct.quantity };
+            }
+            return p;
+        });
+        setProductsCart(newCart);
+    };
+
     return (
         <CartContext.Provider value={{
             productsCart,
             addToCart,
             emptyCart,
             deleteProductFromCart,
-            updateQuantity,
+            updateCart,
             getTotalItems,
-            getTotalPrice
+            getTotalPrice,
+            getCartUpdated
         }}>
             {children}
         </CartContext.Provider>

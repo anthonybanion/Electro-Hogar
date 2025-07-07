@@ -6,45 +6,33 @@ import { useCart } from '../../../contexts/CartContext';
 import SocialIcon from '../../atoms/SocialIcon';
 
 const CartProductCard = ({ product }) => {
-    const {  updateQuantity, deleteProductFromCart } = useCart();
+    const { deleteProductFromCart, updateCart } = useCart();
     const { name, image, price, quantity } = product;
     const [currentQuantity, setQuantity] = useState(quantity);
     const navigate = useNavigate();
     const TrashIcon = <SocialIcon
-      as="i"
-      iconClass="bi bi-trash md:text-2xl"
-      bgColor="bg-white"
-      textColor="text-black"
-      label="Eliminar"
-      size="40"
-      p="5"
+        as="i"
+        iconClass="bi bi-trash"
     />
 
 
     function addQuantity() {
         setQuantity(prevQuantity => prevQuantity + 1);
-        updateQuantityCart();
+        const updatedProduct = { ...product, quantity: currentQuantity + 1 };
+        updateCart(updatedProduct);
     }
 
     function subtractQuantity() {
         // Evita que la cantidad sea menor a 1
         if (currentQuantity <= 1) return;
         setQuantity(prevQuantity => prevQuantity > 1 ? prevQuantity - 1 : 1);
-        updateQuantityCart();
-    }
+        const updatedProduct = { ...product, quantity: currentQuantity - 1 };
+        updateCart(updatedProduct);
+    };
 
     const handleClick = () => {
         navigate(`/productos/${product.id}`);
     };
-    function updateQuantityCart() {
-        const updatedProduct = { ...product, quantity: currentQuantity };
-        console.log("Producto actualizado:", updatedProduct);
-        updateQuantity(updatedProduct);
-        // Aquí podrías llamar a una función para actualizar el producto en el carrito
-        // Por ejemplo, si tienes una función updateProductInCart en tu contexto de carrito:
-        // updateProductInCart(updatedProduct);
-    }
-
 
 
     function handleDeleteProductCart() {
@@ -54,7 +42,7 @@ const CartProductCard = ({ product }) => {
 
 
     return (
-        <div className="flex flex-row justify-between items-center max-w-[700px] bg-white border border-gray-200 rounded-xl shadow-md p-1 m-1 mx-auto">
+        <div className="flex flex-row justify-between items-center max-w-[750px] bg-white border border-gray-200 rounded-xl shadow-md p-1 m-1 md:mx-auto">
             <img
                 src={image}
                 alt={`Imagen de ${name}`}
@@ -73,8 +61,8 @@ const CartProductCard = ({ product }) => {
                 <Button
                     className="cursor-pointer hover:text-red-500"
                     textButton=""
-                icon={TrashIcon} 
-                onClick={handleDeleteProductCart} />
+                    icon={TrashIcon}
+                    onClick={handleDeleteProductCart} />
             </div>
         </div>
     );
