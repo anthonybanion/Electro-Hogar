@@ -12,15 +12,15 @@ const Header = () => {
         <Logo />
 
         {/* Desktop search + nav */}
-        <div className="hidden md:flex items-end flex-col lg:flex-row gap-4 mt-4 md:mt-0">
-          <SearchInput />
+        <div className="hidden sm:flex items-end flex-col gap-4 mt-0">
+          {/*<SearchInput />*/}
           <NavigationMenu />
         </div>
 
         {/* Toggle button mobile */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-white"
+          className="sm:hidden text-white"
           aria-label="Toggle navigation"
         >
           {mobileOpen ? '✖' : '☰'}
@@ -29,8 +29,8 @@ const Header = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden mt-4">
-          <SearchInput />
+        <div className="sm:hidden mt-4">
+          {/*<SearchInput />*/}
           <NavigationMenu isMobile />
         </div>
       )}

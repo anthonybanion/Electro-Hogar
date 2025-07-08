@@ -89,7 +89,7 @@ const LoginRegister = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center py-12">
+    <div className="flex flex-col items-center justify-center py-12 px-2">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
         <h1 className="text-2xl font-bold mb-4 text-center">
           {isRegister ? "Crear cuenta" : "Iniciar sesión"}

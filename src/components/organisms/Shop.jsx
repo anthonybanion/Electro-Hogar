@@ -2,7 +2,6 @@ import { useProductsContext } from "../../contexts/ProductsContext";
 import { useEffect, useState } from "react";
 import ShopProductCard from "../organisms/cards/ShopProductCard";
 import LoadingSpinner from "../atoms/LoadingSpinner";
-import { div } from "framer-motion/client";
 
 const Shop = () => {
     const { products, fetchProducts } = useProductsContext();
@@ -33,7 +32,7 @@ const Shop = () => {
         return <p className="text-gray-500 text-center">No hay productos disponibles.</p>;
     } else {
         return (
-            <div className="grid max-w-[1700px] grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto my-5">
+            <div className="grid w-full grid-cols-2 justify-items-center md:grid-cols-3 xl:grid-cols-4 gap-4 my-5 px-2">
                 {products.map((product) => (
                     <ShopProductCard key={product.id} product={product} />
                 ))}

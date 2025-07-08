@@ -6,10 +6,10 @@ import SocialIconsGroup from "../molecules/SocialIconsGroup";
 
 const Footer = () => (
   <footer className="mt-10">
-    <div className="bg-gray-300 py-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:justify-items-center px-4">
+    <div className="bg-gray-300 py-8 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:justify-items-center px-4">
       {/* Contacto */}
-      <div className="flex flex-col gap-1 text-sm md:text-base">
-        <h2 className="mb-1 text-lg md:text-xl font-semibold">Contacto</h2>
+      <div className="flex flex-col gap-1 text-xs lg:text-sm 2xl:text-base">
+        <h2 className="mb-1 text-base sm:text-lg md:text-xl font-semibold">Contacto</h2>
         <div><i className="bi bi-whatsapp"> 541122222222</i></div>
         <div><i className="bi bi-envelope"> ejemplo@gmail.com</i></div>
         <div><i className="bi bi-geo-alt"> Locales</i></div>
@@ -22,12 +22,12 @@ const Footer = () => (
 
       {/* Formas de pago */}
       <div className="flex flex-col gap-1">
-        <h2 className="mb-1 text-lg md:text-xl font-semibold">Formas de pago</h2>
-        <div className="flex gap-2">
-          <img src={mastercard} alt="mastercard-logo" className="w-10 sm:w-12 h-8 sm:h-10" />
-          <img src={visa} alt="visa-logo" className="w-10 sm:w-12 h-8 sm:h-10" />
-          <img src={naranja} alt="naranja-logo" className="w-10 sm:w-12 h-8 sm:h-10" />
-          <img src={pagofacil} alt="pagofacil-logo" className="w-10 sm:w-12 h-8 sm:h-10" />
+        <h2 className="mb-1 text-base sm:text-lg md:text-xl font-semibold">Formas de pago</h2>
+        <div className="flex gap-2 my-1">
+          <img src={mastercard} alt="mastercard-logo" className="w-10 sm:w-12 h-8 md:h-10" />
+          <img src={visa} alt="visa-logo" className="w-10 md:w-12 h-8 md:h-10" />
+          <img src={naranja} alt="naranja-logo" className="w-10 md:w-12 h-8 md:h-10" />
+          <img src={pagofacil} alt="pagofacil-logo" className="w-10 md:w-12 h-8 md:h-10" />
         </div>
       </div>
     </div>
