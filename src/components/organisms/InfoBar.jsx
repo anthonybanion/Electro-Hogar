@@ -20,15 +20,28 @@ const InfoBar = () => (
             <InfoBlock
                 icon="shield-check"
                 title="SEGURIDAD"
-                description="Podés revisar nuestro perfil como vendedores en MercadoLibre haciendo click acá."
+                description={
+                    <>
+                        Podés revisar nuestro perfil como vendedores en MercadoLibre haciendo{' '}
+                        <a href="https://www.mercadolibre.com.ar/" target="_blank" rel="noopener noreferrer">
+                            Click acá
+                        </a>.
+                    </>
+                }
             />
             <InfoBlock
                 icon="whatsapp"
                 title="WhatsApp"
-                description="Escribinos a nuestro WhatsApp. Respondemos tus consultas rapidamente. Click acá."
+                description={
+                    <>
+                        Escribinos a nuestro WhatsApp. Respondemos tus consultas rápidamente.{' '}
+                        <a href="https://wa.me/541122222222" target="_blank" rel="noopener noreferrer">
+                            Click acá
+                        </a>.
+                    </>
+                }
             />
         </div>
-
     </motion.section>
 );
 

@@ -1,11 +1,12 @@
 import Swal from 'sweetalert2'
 
-export function SweetBasic(titulo, text, icon, textoBoton) {
+export function SweetBasic(title, text, icon, textButton) {
+  console.log("🔥 SweetBasic llamado con:", { title, text, icon, textButton });
   Swal.fire({
-    title: titulo,
+    title: title,
     text: text,
     icon: icon,
-    confirmButtonText: textoBoton
+    confirmButtonText: textButton
   })
 }
 
@@ -27,21 +28,21 @@ export function sweetTimer(titulo) {
   });
 }
 
-export const SweetConfirm = async () => {
+export const SweetConfirm = async ({ text, confirmButtonText, text2 }) => {
   const result = await Swal.fire({
     title: "¿Estás seguro?",
-    text: "Vas a vaciar el carrito de compras",
+    text: text,
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Sí, vaciar carrito",
+    confirmButtonText: confirmButtonText,
   });
 
   if (result.isConfirmed) {
     await Swal.fire({
       title: "¡Listo!",
-      text: "Tu carrito ha sido vaciado.",
+      text: text2,
       icon: "success"
     });
     return true;

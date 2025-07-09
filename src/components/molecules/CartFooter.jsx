@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
 import Button from "../atoms/Button";
 import { SweetConfirm } from "../../utility/sweetAlert";
-import SocialIcon from "../atoms/SocialIcon";
 
 const CartFooter = ({ onCheckout }) => {
     const { getTotalItems, getTotalPrice, emptyCart } = useCart();
@@ -10,6 +9,19 @@ const CartFooter = ({ onCheckout }) => {
 
     const handleClick = () => {
         navigate(`/productos/`);
+    };
+
+    const handleEmptyCart = async () => {
+        const confirmed = await SweetConfirm(
+            {
+                text: "Vas a vaciar el carrito de compras",
+                confirmButtonText: "Vaciar carrito",
+                text2: "El carrito ha sido vaciado."
+            }
+        );
+        if (confirmed) {
+            emptyCart();
+        }
     };
 
     return (
@@ -22,12 +34,7 @@ const CartFooter = ({ onCheckout }) => {
                 <Button
                     textButton="Vaciar carrito"
                     className="bg-red-500 text-white text-sm md:text-base items-center hover:bg-red-600 px-4 py-2 rounded-lg"
-                    onClick={async () => {
-                        const confirmed = await SweetConfirm();
-                        if (confirmed) {
-                            emptyCart();
-                        }
-                    }}
+                    onClick={handleEmptyCart}
                 />
 
                 <Button

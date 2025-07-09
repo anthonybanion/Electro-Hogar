@@ -3,7 +3,7 @@ import NavLink from '../atoms/NavLink';
 
 const NavigationMenu = ({ isMobile = false }) => {
 
-  const { user, logoutUser } = useAuth();
+  const { user, logoutUser, isAdmin } = useAuth();
 
   const handleLogout = () => {
     logoutUser();
@@ -16,6 +16,10 @@ const NavigationMenu = ({ isMobile = false }) => {
       { label: 'Ingresar', path: '/login' },
     { label: <i className="bi bi-cart text-white text-xs md:text-sm lg:text-base hover:text-cyan-400 transition-colors duration-200" title="Carrito"></i>, path: '/carrito' },
   ];
+
+  if (isAdmin) {
+    links.push({ label: 'Admin', path: '/admin' });
+  }
 
   return (
     <ul className={`flex ${isMobile ? 'flex-col mt-4 space-y-1' : 'space-x-6'}`}>

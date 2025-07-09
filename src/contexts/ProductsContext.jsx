@@ -5,6 +5,8 @@ const ProductsContext = createContext();
 export function ProductsProvider({ children }) {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [refreshProducts, setRefreshProducts] = useState(false);
+
 
     const fetchProducts = () => {
         return new Promise((resolve, reject) => {
@@ -20,6 +22,8 @@ export function ProductsProvider({ children }) {
                 });
         });
     };
+
+    const triggerRefresh = () => setRefreshProducts(prev => !prev);
 
     const fetchProductById = (id) => {
         return new Promise((resolve, reject) => {
@@ -73,8 +77,6 @@ export function ProductsProvider({ children }) {
     };
 
     const deleteProduct = (id) => {
-        const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar este producto?');
-        if (!confirmDelete) return;
 
         return new Promise(async (resolve, reject) => {
             try {
@@ -95,6 +97,8 @@ export function ProductsProvider({ children }) {
             value={{
                 products,
                 selectedProduct,
+                refreshProducts,
+                triggerRefresh,
                 setSelectedProduct,
                 fetchProducts,
                 fetchProductById,
