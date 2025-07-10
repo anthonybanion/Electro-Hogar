@@ -47,7 +47,7 @@ const FeaturedProducts = () => {
         >
           {featured.map((product) => (
             <SwiperSlide key={product.id}>
-              <h3 className="text-lg font-semibold m-3 text-center">{product.name}</h3>
+              <h3 className="text-lg font-semibold m-3 text-center truncate">{product.name}</h3>
               <img
                 src={product.image}
                 alt={`Imagen de ${product.name}`}
@@ -57,7 +57,7 @@ const FeaturedProducts = () => {
               <div className="flex items-center justify-center mt-4 gap-3 text-sm font-sans">
                 <Button
                   textButton="Ver detalles"
-                  className="bg-white text-gray-950 border border-gray-950 hover:bg-gray-100 px-3 py-2 rounded-xl w-full"
+                  className="bg-white text-gray-950 border border-gray-950 cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-xl w-full"
                   onClick={() => handleClick(product.id)}
                 />
               </div>

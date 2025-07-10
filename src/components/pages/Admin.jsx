@@ -22,10 +22,10 @@ const Admin = () => {
 
     return (
         <DefaultLayout>
-            <h1 className="text-2xl text-center font-bold m-4">Panel de Administración</h1>
+            <h1 className="text-base lg:text-2xl text-center font-bold m-4">Panel de Administración</h1>
             <Button textButton="Agregar Producto"
                 onClick={() => setShowModal(true)}
-                className="bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 mb-4 mx-auto block rounded-2xl font-mono "
+                className="bg-blue-500 text-white text-xs lg:text-base px-4 py-2 cursor-pointer hover:bg-blue-600 mb-4 mx-auto block rounded-2xl font-mono "
             />
             <AddProductModal
                 isOpen={showModal}

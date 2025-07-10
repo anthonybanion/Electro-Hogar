@@ -12,7 +12,7 @@ const NavigationMenu = ({ isMobile = false }) => {
   const links = [
     { label: 'Inicio', path: '/' },
     { label: 'Productos', path: '/productos' },
-    user ? { label: "Cerrar sesión", action: handleLogout } :
+    user ? { label: "Salir", action: handleLogout } :
       { label: 'Ingresar', path: '/login' },
     { label: <i className="bi bi-cart text-white text-xs md:text-sm lg:text-base hover:text-cyan-400 transition-colors duration-200" title="Carrito"></i>, path: '/carrito' },
   ];
