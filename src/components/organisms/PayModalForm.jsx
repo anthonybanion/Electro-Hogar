@@ -37,8 +37,8 @@ const PayModalForm = ({ isOpen, onClose, onSubmit }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-gradient-to-tl from-blue-300 via-blue-500 to-blue-800 flex items-center justify-center z-50">
-            <div className="flex flex-col gap-2  bg-white  rounded-xl p-6 w-[90%] max-w-lg shadow-md">
+        <div className="fixed inset-0 flex items-center justify-center backdrop-blur-xl z-50">
+            <div className="flex flex-col gap-2 bg-white border-1 border-gray-200 rounded-xl p-6 w-[90%] max-w-lg shadow-md">
                 <h2 className="text-xl font-mono font-semibold mb-4">Formulario de pago</h2>
                 <input
                     name="name"
@@ -88,8 +88,8 @@ const PayModalForm = ({ isOpen, onClose, onSubmit }) => {
                 />
 
                 <div className="flex justify-end mt-4 gap-2">
-                    <button onClick={onClose} className="px-3 py-1 bg-gray-300 rounded cursor-pointer hover:bg-gray-400">Cancelar</button>
-                    <button onClick={handleSubmit} className="px-3 py-1 bg-blue-600 cursor-pointer text-white rounded hover:bg-blue-700">Finalizar Compra</button>
+                    <button onClick={onClose} className="px-3 py-1 bg-gray-300 rounded-2xl cursor-pointer hover:bg-gray-400">Cancelar</button>
+                    <button onClick={handleSubmit} className="px-3 py-1 bg-blue-600 cursor-pointer text-white rounded-2xl hover:bg-blue-700">Finalizar Compra</button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useProductsContext } from "../../contexts/ProductsContext";
+import { SweetBasic } from "../../utility/sweetAlert";
 
 const ModalEditProduct = ({ isOpen, onClose, productId, onProductUpdated }) => {
   const { fetchProductById, updateProduct } = useProductsContext();
@@ -28,8 +29,21 @@ const ModalEditProduct = ({ isOpen, onClose, productId, onProductUpdated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.name || !form.image || !form.description || !form.price || !form.stock) {
-      alert("Todos los campos son obligatorios.");
+    const { name, image, description, price, stock } = form;
+
+    // Validaciones
+    if (!name.trim() || !image.trim() || !description.trim() || !price || !stock) {
+      SweetBasic("Error", "Por favor, completa todos los campos.", "error", "Aceptar");
+      return;
+    }
+
+    if (description.trim().length < 10) {
+      SweetBasic("Error", "La descripción debe tener al menos 10 caracteres.", "error", "Aceptar");
+      return;
+    }
+
+    if (Number(price) <= 0 || Number(stock) <= 0) {
+      SweetBasic("Error", "El precio y el stock deben ser mayores a 0.", "error", "Aceptar");
       return;
     }
 
@@ -45,11 +59,12 @@ const ModalEditProduct = ({ isOpen, onClose, productId, onProductUpdated }) => {
     }
   };
 
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-tl from-blue-300 via-blue-500 to-blue-800 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-xl shadow-lg w-[90%] max-w-lg">
+    <div className="fixed inset-0 flex items-center justify-center backdrop-blur-xl z-50">
+      <div className="bg-white p-6 rounded-xl border-1 border-gray-200 shadow-lg w-[90%] max-w-lg">
         <h2 className="text-xl font-bold mb-4">Editar Producto</h2>
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
@@ -86,8 +101,8 @@ const ModalEditProduct = ({ isOpen, onClose, productId, onProductUpdated }) => {
             className="w-full border-1 border-gray-400 p-1 rounded-xl" />
 
           <div className="flex justify-end gap-2 pt-4">
-            <button type="button" onClick={onClose} className="bg-gray-300 px-4 py-2 rounded cursor-pointer hover:bg-gray-400">Cancelar</button>
-            <button type="submit" disabled={loading} className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700">
+            <button type="button" onClick={onClose} className="bg-gray-300 px-4 py-2 rounded-2xl cursor-pointer hover:bg-gray-400">Cancelar</button>
+            <button type="submit" disabled={loading} className="bg-blue-600 text-white px-4 py-2 rounded-2xl cursor-pointer hover:bg-blue-700">
               {loading ? "Guardando..." : "Guardar cambios"}
             </button>
           </div>
