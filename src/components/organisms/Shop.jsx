@@ -6,9 +6,11 @@ import { useSearch } from "../../contexts/SearchContext";
 
 const Shop = () => {
     const { products, fetchProducts } = useProductsContext();
-    const [cargando, setCargando] = useState(true)
+    const [load, setLoad] = useState(true)
     const [error, setError] = useState(null)
     const { search, order, category } = useSearch();
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 8;
 
     useEffect(() => {
         const loadProducts = async () => {
@@ -17,11 +19,16 @@ const Shop = () => {
             } catch (err) {
                 setError('Hubo un problema al cargar los productos.');
             } finally {
-                setCargando(false);
+                setLoad(false);
             }
         };
         loadProducts();
     }, []);
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [search, category, order]);
+
 
     let filteredProducts = products.filter((product) => {
         return product.name.toLowerCase().includes(search.toLowerCase());
@@ -48,7 +55,17 @@ const Shop = () => {
         );
     }
 
-    if (cargando) {
+    // Paginación
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const paginatedProducts = filteredProducts.slice(startIndex, startIndex + productsPerPage);
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    if (load) {
         return <div className="mt-20">
             <LoadingSpinner size="w-20 h-20" color="border-blue-800" />
         </div>;
@@ -58,11 +75,28 @@ const Shop = () => {
         return <p className="text-gray-500 text-center">No hay productos disponibles.</p>;
     } else {
         return (
-            <div className="grid w-full grid-cols-2 justify-items-center md:grid-cols-3 xl:grid-cols-4 gap-4 my-5 px-2">
-                {filteredProducts.map((product) => (
-                    <ShopProductCard key={product.id} product={product} />
-                ))}
-            </div>
+            <>
+                <div className="grid w-full grid-cols-2 justify-items-center md:grid-cols-3 xl:grid-cols-4 gap-4 my-5 px-2">
+                    {paginatedProducts.map((product) => (
+                        <ShopProductCard key={product.id} product={product} />
+                    ))}
+                </div>
+
+                <div className="flex justify-center my-4 gap-2">
+                    {Array.from({ length: totalPages }, (_, i) => (
+                        <button
+                            key={i + 1}
+                            className={`px-3 py-1 rounded-full size-8 ${currentPage === i + 1
+                                ? "bg-gray-800 text-white"
+                                : "bg-gray-200 hover:bg-gray-300"
+                                }`}
+                            onClick={() => handlePageChange(i + 1)}
+                        >
+                            {i + 1}
+                        </button>
+                    ))}
+                </div>
+            </>
         );
     }
 };
