@@ -38,21 +38,13 @@ const ProductDetailCard = ({ product }) => {
             <div className="flex flex-col p-4 gap-6 w-full">
                 <h3 className="text-xl md:text-2xl font-semibold">{name}</h3>
                 <div>
-                    <p className="text-lg md:text-xl font-bold mt-2 text-green-600">${price}</p>
-                    <p className="text-sm md:text-base text-gray-500">9 cuotas sin interés</p>
+                    <p className="text-lg md:text-xl font-bold mt-2 text-red-600">${price}</p>
+                    <p className="text-sm md:text-base text-gray-500">6 cuotas sin interés</p>
                     <p className="text-sm md:text-base text-gray-500">Envío a todo el pais</p>
                 </div>
                 <p className='text-sm md:text-base'>{product.description}</p>
                 <p className="text-sm md:text-base text-gray-500">Cantidad disponible: {stock}</p>
-                <div>
-                    <p className="text-base text-gray-500">Talle</p>
-                    <select className="border border-gray-300 rounded-md p-2 w-full xl:w-6/12" defaultValue="S">
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                    </select>
-                </div>
+               
                 <div className="flex items-center justify-center mt-auto">
                     <button className="bg-gray-950 text-white cursor-pointer w-8 h-8 flex items-center justify-center rounded-full p-2 mr-2 hover:bg-gray-800" onClick={subtractQuantity}>-</button>
                     <span className="text-lg font-semibold mx-2">{quantity}</span>
@@ -61,7 +53,7 @@ const ProductDetailCard = ({ product }) => {
                 <div className="flex items-center justify-center mt-4 gap-3 text-sm font-sans">
                     <Button
                         textButton="Comprar"
-                        className="bg-gray-950 text-white cursor-pointer hover:bg-gray-800 px-3 py-2 rounded-xl w-full"
+                        className="bg-red-500 text-white cursor-pointer hover:bg-red-600 px-3 py-2 rounded-xl w-full"
                         onClick={handleAddToCart}
                     />
                 </div>

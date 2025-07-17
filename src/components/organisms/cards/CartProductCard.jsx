@@ -49,9 +49,9 @@ const CartProductCard = ({ product }) => {
                 className="w-28 sm:w- aspect-square object-cover rounded-md"
             />
             <h3 className="text-xs sm:text-base md:text-lg font-semibold text-center max-w-[70px] sm:max-w-[100px]">{name}</h3>
-            <p className="text-xs sm:text-base md:text-lg font-semibold text-center">${price * currentQuantity}</p>
+            <p className="text-xs sm:text-base md:text-lg font-semibold text-center">${price}</p>
             <div className="text-xs sm:text-base md:text-lg font-semibold flex items-center justify-center border border-gray-400 rounded-xl">
-                <button className="w-6 sm:w-8 h-6 sm:h-8 flex items-center justify-center mr-1 sm:mr-2 cursor-pointer" onClick={subtractQuantity}>
+                <button className="w-6 sm:w-8 h-6 sm:h-8 flex items-center justify-center mr-1 sm:mr-2 cursor-pointer " onClick={subtractQuantity}>
                     -
                 </button>
                 <span className="mx-0 sm:mx-3">{currentQuantity}</span>

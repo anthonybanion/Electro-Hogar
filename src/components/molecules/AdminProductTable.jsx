@@ -32,7 +32,7 @@ const AdminProductTable = ({ products }) => {
     <>
       <div className="w-full max-w-[1400px] overflow-x-auto mx-auto my-5 border-1">
         {/* Cabecera */}
-        <div className="grid grid-cols-9 sm:grid-cols-12 gap-3 font-bold py-2 px-4 text-xs sm:text-sm text-white bg-slate-800">
+        <div className="grid grid-cols-9 sm:grid-cols-12 gap-3 font-bold py-2 px-4 text-xs sm:text-sm text-white bg-[#1e1e1e]">
           <div className="col-span-1">ID</div>
           <div className="col-span-2">Nombre</div>
           <div className="col-span-2">Imagen</div>
@@ -41,6 +41,7 @@ const AdminProductTable = ({ products }) => {
           <div className="hidden sm:block col-span-1">Stock</div>
           <div className="col-span-2">Acciones</div>
         </div>
+
 
         {/* Lista de productos */}
         {products.map((product) => (
@@ -60,7 +61,7 @@ const AdminProductTable = ({ products }) => {
             <div className="col-span-2 flex flex-col sm:flex-row gap-2">
               <Button
                 textButton="Editar"
-                className="bg-yellow-500 text-white px-2 py-1 rounded text-xs lg:text-sm cursor-pointer hover:bg-yellow-600"
+                className="bg-blue-500 text-white px-2 py-1 rounded text-xs lg:text-sm cursor-pointer hover:bg-blue-600"
                 onClick={() => handleEditClick(product.id)}
               />
               <Button

@@ -53,7 +53,7 @@ const FeaturedProducts = () => {
                 alt={`Imagen de ${product.name}`}
                 className="w-full aspect-square object-cover rounded-md"
               />
-              <p className="text-xl font-bold mt-2 text-green-600 text-center">${product.price}</p>
+              <p className="text-xl font-bold mt-2 text-red-600 text-center">${product.price}</p>
               <div className="flex items-center justify-center mt-4 gap-3 text-sm font-sans">
                 <Button
                   textButton="Ver detalles"

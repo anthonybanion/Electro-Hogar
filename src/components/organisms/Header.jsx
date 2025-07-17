@@ -7,7 +7,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="bg-gray-950 px-6 py-4 sticky top-0 z-10">
+    <header className="bg-[#e50019] px-6 py-4 sticky top-0 z-10">
       <div className="flex items-center justify-between">
         <Logo />
 

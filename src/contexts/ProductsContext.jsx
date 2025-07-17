@@ -10,7 +10,7 @@ export function ProductsProvider({ children }) {
 
     const fetchProducts = () => {
         return new Promise((resolve, reject) => {
-            fetch('https://6827a00a6b7628c52910f842.mockapi.io/data')
+            fetch('https://68779d8edba809d901f03011.mockapi.io/products/products')
                 .then((res) => res.json())
                 .then((data) => {
                     setProducts(data);
@@ -27,7 +27,7 @@ export function ProductsProvider({ children }) {
 
     const fetchProductById = (id) => {
         return new Promise((resolve, reject) => {
-            fetch(`https://6827a00a6b7628c52910f842.mockapi.io/data/${id}`)
+            fetch(`https://68779d8edba809d901f03011.mockapi.io/products/products/${id}`)
                 .then((res) => res.json())
                 .then((product) => {
                     setSelectedProduct(product);
@@ -43,7 +43,7 @@ export function ProductsProvider({ children }) {
     const addProduct = (product) => {
         return new Promise(async (resolve, reject) => {
             try {
-                const response = await fetch('https://6827a00a6b7628c52910f842.mockapi.io/data', {
+                const response = await fetch('https://68779d8edba809d901f03011.mockapi.io/products/products', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(product),
@@ -61,7 +61,7 @@ export function ProductsProvider({ children }) {
     const updateProduct = (product) => {
         return new Promise(async (resolve, reject) => {
             try {
-                const response = await fetch(`https://6827a00a6b7628c52910f842.mockapi.io/data/${product.id}`, {
+                const response = await fetch(`https://68779d8edba809d901f03011.mockapi.io/products/products/${product.id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(product),
@@ -80,7 +80,7 @@ export function ProductsProvider({ children }) {
 
         return new Promise(async (resolve, reject) => {
             try {
-                const response = await fetch(`https://6827a00a6b7628c52910f842.mockapi.io/data/${id}`, {
+                const response = await fetch(`https://68779d8edba809d901f03011.mockapi.io/products/products/${id}`, {
                     method: 'DELETE',
                 });
                 if (!response.ok) throw new Error('Hubo un problema al eliminar el producto');

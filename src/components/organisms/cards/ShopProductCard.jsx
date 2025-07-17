@@ -39,7 +39,7 @@ const ShopProductCard = ({ product }) => {
                 alt={`Imagen de ${name}`}
                 className="w-full aspect-square object-cover rounded-md"
             />
-            <p className="text-sm sm:text-lg lg:text-xl font-semibold lg:font-bold mt-2 text-green-600 text-center">${price}</p>
+            <p className="text-sm sm:text-lg lg:text-xl font-semibold lg:font-bold mt-2 text-red-600 text-center">${price}</p>
             <div className="flex items-center justify-center mt-2 sm:mt-4">
                 <button className="bg-gray-950 text-xs sm:text-base text-white cursor-pointer w-4 sm:w-6 lg:w-8 h-4 sm:h-6 lg:h-8 flex items-center justify-center rounded-full mr-1 sm:mr-2 hover:bg-gray-800" onClick={subtractQuantity}>
                     -
@@ -50,7 +50,7 @@ const ShopProductCard = ({ product }) => {
             <div className="flex items-center justify-center mt-2 sm:mt-4 gap-1 sm:gap-3 text-[10px] sm:text-xs lg:text-sm">
                 <Button
                     textButton="Comprar"
-                    className="bg-gray-950 text-white cursor-pointer hover:bg-gray-800 px-1 sm:px-3 py-1 rounded-xl w-full"
+                    className="bg-red-500 text-white cursor-pointer hover:bg-red-600 px-1 sm:px-3 py-1 rounded-xl w-full"
                     onClick={handleAddToCart}
                 />
                 <Button

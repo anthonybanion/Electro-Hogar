@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Verificar si el usuario es el admin
-  const isAdmin = user?.email === "admin@gmail.com";
+  const isAdmin = user?.email === "electrohogar@gmail.com";
 
   useEffect(() => {
     const unsubscribe = subscribeToAuthChanges((firebaseUser) => {

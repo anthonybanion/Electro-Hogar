@@ -39,11 +39,11 @@ const CartFooter = ({ onCheckout }) => {
 
                 <Button
                     textButton="Seguir comprando"
-                    className="span-2 bg-gray-950 text-white text-xs md:text-base h-full cursor-pointer hover:bg-gray-800 px-4 py-2 rounded-lg"
+                    className="span-2 bg-blue-500 text-white text-xs md:text-base h-full cursor-pointer hover:bg-blue-600 px-4 py-2 rounded-lg"
                     onClick={handleClick} />
                 <Button
                     textButton="Finalizar compra"
-                    className="span-3 bg-green-500 text-white text-xs md:text-base h-full cursor-pointer hover:bg-green-600 px-4 py-2 rounded-lg"
+                    className="span-3 bg-[#1e1e1e] text-white text-xs md:text-base h-full cursor-pointer hover:bg-black px-4 py-2 rounded-lg"
                     onClick={onCheckout} />
             </div>
         </div>
