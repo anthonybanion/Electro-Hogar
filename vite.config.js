@@ -12,7 +12,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ['react', 'react-dom'],
-          icons: ['bootstrap-icons'],
+          
           // Otras librerías pesadas que uses, como chart.js, axios, etc.
         }
       }

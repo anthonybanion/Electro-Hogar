@@ -4,6 +4,8 @@
 
 Repositorio: [https://github.com/anthonybanion/Electro-Hogar.git](https://github.com/anthonybanion/Electro-Hogar.git)
 
+Demostración: [ecommerce-electrohogar.netlify.app](https://ecommerce-electrohogar.netlify.app/)
+
 ## Contextos globales y dependencias
 
 Electro Hogar utiliza **React Context API** para el manejo centralizado del estado de la aplicación. Los principales contextos son:
